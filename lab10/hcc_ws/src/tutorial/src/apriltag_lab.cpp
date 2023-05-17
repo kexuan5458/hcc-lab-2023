@@ -20,7 +20,7 @@ double min_distance;
 
 void listener(){
     // use tf_listener to get the transformation from camera_link to tag 0
-    for (int i = 0; i<16;i++){
+    for (int i = 0; i<16; i++){
         
         /**
          * For part2, you should find the transformation from map_tag_0 to other map_tag. 
@@ -126,16 +126,19 @@ void listener(){
 }
 
 int main(int argc, char** argv){
-    ros::init(argc, argv, "apriltag_tf");
+    ros::init(argc, argv, "apriltag_tf"); // ros::init(argc, argv, "node_name");
     ros::NodeHandle nh;
     ros::Subscriber tf_sub;
     // tf_sub = nh.subscribe("tf_static",16,&tf_cb);
-    tf_listener = new tf::TransformListener();
+    tf_listener = new tf::TransformListener(); // <tf/transform_listener.h>
+
 
     while (ros::ok())
     {
         ros::spinOnce();
-        listener();
+    	// spin() & spinOnce()
+    	// https://ithelp.ithome.com.tw/articles/10238734
+        listener(); // defined by yourself
     }
     
     return 0;
